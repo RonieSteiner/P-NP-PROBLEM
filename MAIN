@@ -1,0 +1,36 @@
+import random
+listanomes = []
+listapares = [[] for i in range(50)]
+listafinal = []
+
+#cria uma lista com 400 números
+contador = 1
+while len(listanomes) < 400:
+    listanomes.append(contador)
+    contador += 1
+contadorpar = 0
+contador = 0
+
+#Cria uma lista com 50 pares
+while contador < 50:
+    listapares[contador].append(contadorpar)
+    contadorpar += 2
+    contador += 1
+contador = 0
+
+while contador < 50:
+    listapares[contador].append(contadorpar)
+    contadorpar += 2
+    contador += 1
+
+#Cria uma lista com 100 números dentre os 400 porém sem conter os pares
+while len(listafinal) < 100:  
+    nome = random.choice(listanomes)
+    index = listanomes.index(nome)
+    listanomes.pop(index)
+    listafinal.append(nome)
+    for _ in listapares:
+        if nome in _:
+            if nome == _[1]:
+                listanomes.pop(_[0])
+            else: listanomes.pop(_[1])
